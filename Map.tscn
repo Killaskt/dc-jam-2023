@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://MapCreator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Map.gd" type="Script" id=2]
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="MapCreator" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( -65539, 0, 0, -3, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65539, 0, 0, 131075, 0, 0 )
