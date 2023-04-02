@@ -37,23 +37,23 @@ func tween_rotation(change):
 func _on_Timer_timeout() -> void:
 	var GO_W := Input.is_action_pressed("forward")
 	var GO_S := Input.is_action_pressed("back")
-	var GO_A := Input.is_action_pressed("strafe_left")
-	var GO_D := Input.is_action_pressed("strafe_right")
+	var TURN_A := Input.is_action_pressed("strafe_left")
+	var TURN_D := Input.is_action_pressed("strafe_right")
 	var TURN_Q := Input.is_action_pressed("turn_left")
 	var TURN_E := Input.is_action_pressed("turn_right")
 
 	var ray_dir
-	var turn_dir = int(TURN_Q) - int(TURN_E)
+	var turn_dir = int(TURN_A) - int(TURN_D) #int(TURN_Q) - int(TURN_E)
 
 
 	if GO_W: 
 		ray_dir = forward
 	elif GO_S: 
 		ray_dir = back
-	elif GO_A: 
-		ray_dir = left
-	elif GO_D: 
-		ray_dir = right
+	# elif GO_A: 
+	# 	ray_dir = left
+	# elif GO_D: 
+	#	ray_dir = right
 	elif turn_dir:
 		timerprocessor.stop()
 		yield(tween_rotation(PI/2 * turn_dir), "completed")
