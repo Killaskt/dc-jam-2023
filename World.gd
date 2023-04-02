@@ -1,5 +1,6 @@
 extends Spatial
 
+#const Cell = preload("res://UpperCell.tscn")
 const Cell = preload("res://Cell.tscn")
 
 export(PackedScene) var Map
