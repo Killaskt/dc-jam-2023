@@ -15,15 +15,36 @@ func _ready():
 	environment.dof_blur_far_enabled = true
 	environment.dof_blur_near_enabled = true
 	generate_map()
+	
+func enemy_creation():
+		var enemy = KinematicBody.new()
+		var enemy_mesh = load("res://Enemy2.tscn").instance()
+		enemy.translation = Vector3(0, 0, 0)
+		enemy.rotation_degrees = Vector3(0, 0, 0)
+		enemy.add_child(enemy_mesh)
+		return enemy
+		
+func randomly_true() -> bool:
+	return randi() % 10 == 0
 
 func generate_map():
 	if not Map is PackedScene: return
 	var map = Map.instance()
 	var tileMap = map.get_tilemap()
 	var used_tiles = tileMap.get_used_cells()
+	
 	map.free() # We don't need it now that we have the tile data
+	
 	for tile in used_tiles:
 		var cell = Cell.instance()
+		var nav_mesh_inst = NavigationMeshInstance.new()
+		
+		if randomly_true():
+			var enemy = enemy_creation()
+			cell.add_child(enemy)
+			
+		cell.add_child(nav_mesh_inst)
+		
 		add_child(cell)
 		cell.translation = Vector3(tile.x*Globals.GRID_SIZE, 0, tile.y*Globals.GRID_SIZE)
 		cells.append(cell)
