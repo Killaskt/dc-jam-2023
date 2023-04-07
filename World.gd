@@ -11,7 +11,7 @@ func _ready():
 	var environment = get_tree().root.world.fallback_environment
 	environment.background_mode = Environment.BG_COLOR
 	environment.background_color = Color.black
-	environment.ambient_light_color = Color("432d6d")
+	environment.ambient_light_color = Color("1F51FF")#Color("9D00FF")
 	environment.dof_blur_far_enabled = true
 	environment.dof_blur_near_enabled = true
 	generate_map()
