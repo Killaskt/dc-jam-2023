@@ -8,6 +8,7 @@ export(PackedScene) var Map
 var cells = []
 
 func _ready():
+	randomize()
 	var environment = get_tree().root.world.fallback_environment
 	environment.background_mode = Environment.BG_COLOR
 	environment.background_color = Color.black
